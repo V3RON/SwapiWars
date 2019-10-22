@@ -1,0 +1,10 @@
+<mat-card>
+    <mat-card-content>
+        <ng-container *ngIf="round > 0; else startingGame">
+            Round {{ round }}
+        </ng-container>
+        <ng-template #startingGame>
+            Starting game...
+        </ng-template>
+    </mat-card-content>
+</mat-card>

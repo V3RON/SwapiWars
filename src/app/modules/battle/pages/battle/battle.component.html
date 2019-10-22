@@ -1,0 +1,19 @@
+<div class="swars-battle__container">
+    <swars-round-counter [round]="round$ | async" class="swars-battle__round-counter"></swars-round-counter>
+    <swars-game-score [scores]="scores$ | async" class="swars-battle__game-score"></swars-game-score>
+    <div class="swars-battle__cards row around-xs middle-xs">
+        <ng-container *ngIf="entities$ | async as pair; else loading">
+            <swars-battle-card class="col-xs-2" [entity]="pair[0]"></swars-battle-card>
+            <swars-battle-card class="col-xs-2" [entity]="pair[1]"></swars-battle-card>
+        </ng-container>
+        <ng-template #loading>
+            <swars-loading-indicator></swars-loading-indicator>
+        </ng-template>
+        <div class="swars-battle__result-container" [class.active]="ended">
+            <swars-battle-result *ngIf="ended" [player]="winner"></swars-battle-result>
+        </div>
+    </div>
+    <button (click)="rerollEntities()" [disabled]="!ended" mat-flat-button color="primary"
+            class="swars-battle__reroll-button">Reroll!
+    </button>
+</div>

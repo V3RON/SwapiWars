@@ -1,0 +1,74 @@
+@import '~@angular/material/theming';
+
+$swapi-black: (
+  50: #000,
+  100: #000,
+  200: #000,
+  300: #000,
+  400: #000,
+  500: #000,
+  600: #000,
+  700: #000,
+  800: #000,
+  900: #000,
+  A100: #000,
+  A200: #000,
+  A400: #000,
+  A700: #000,
+  contrast: (
+    50: #000,
+    100: #000,
+    200: #000,
+    300: #000,
+    400: #000,
+    500:#000,
+    600: #000,
+    700: #000,
+    800: #000,
+    900: #000,
+    A100: #000,
+    A200: #000,
+    A400: #000,
+    A700: #000,
+  )
+);
+
+$swapi-yellow: (
+  50 : #fffce4,
+  100 : #fff8bc,
+  200 : #fff48f,
+  300 : #ffef62,
+  400 : #ffeb41,
+  500 : #ffe81f,
+  600 : #ffe51b,
+  700 : #ffe217,
+  800 : #ffde12,
+  900 : #ffd80a,
+  A100 : #ffffff,
+  A200 : #fffdf5,
+  A400 : #fff4c2,
+  A700 : #fff0a8,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$SwapiWars-primary: mat-palette($swapi-yellow);
+$SwapiWars-accent: mat-palette($swapi-black, A200, A100, A400);
+$SwapiWars-warn: mat-palette($mat-red);
+$SwapiWars-theme: mat-dark-theme($SwapiWars-primary, $SwapiWars-accent, $SwapiWars-warn);
+
+@include angular-material-theme($SwapiWars-theme);

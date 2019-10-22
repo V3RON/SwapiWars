@@ -1,0 +1,26 @@
+@import '../../../../theme/palette';
+
+swars-landing {
+  display: block;
+  position: relative;
+  height: 100%;
+}
+
+.swars-landing__container {
+  margin: 0 auto;
+  width: 520px;
+  max-width: 80%;
+}
+
+.swars-landing__header {
+  font-size: 5rem;
+  font-family: 'StarJedi';
+  line-height: 1;
+  text-align: center;
+  color: mat-color($SwapiWars-primary);
+}
+
+button.swars-landing__form-submit {
+  margin-top: 2rem;
+  width: 100%;
+}

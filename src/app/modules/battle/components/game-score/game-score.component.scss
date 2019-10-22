@@ -1,0 +1,31 @@
+@import '../../../../../theme/palette';
+
+swars-game-score {
+  display: block;
+  width: 20rem;
+}
+
+.swars-game-score__header .mat-card-header-text {
+  margin: 0 auto;
+}
+
+.swars-game-score__player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.swars-game-score__player-score {
+  padding: 1rem;
+  border-radius: 0.2rem;
+  font-weight: bold;
+  background: mat-color($SwapiWars-primary);
+  color: mat-color($SwapiWars-accent);
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 4rem;
+  margin-top: 1rem;
+}

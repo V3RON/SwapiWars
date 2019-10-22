@@ -1,0 +1,10 @@
+<mat-card>
+    <mat-card-content>
+        <ng-container *ngIf="_player !== -1; else tieTemplate">
+            Player {{_player + 1}} has won!
+        </ng-container>
+        <ng-template #tieTemplate>
+            A tie!
+        </ng-template>
+    </mat-card-content>
+</mat-card>

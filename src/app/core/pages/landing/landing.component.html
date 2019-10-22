@@ -1,0 +1,11 @@
+<div class="swars-landing__container">
+    <h1 class="swars-landing__header">swapi<br/>wars</h1>
+    <form (ngSubmit)="onStart()" [formGroup]="startingForm">
+        <swars-dual-selector title="Choose your fighter" [options]="options"
+                             formControlName="mode"></swars-dual-selector>
+        <!--<swars-dual-selector title="How many players?" [options]="optionsPlayers" formControlName="players"></swars-dual-selector>-->
+        <button type="submit" [disabled]="startingForm.invalid" mat-flat-button color="primary"
+                class="swars-landing__form-submit">Run!
+        </button>
+    </form>
+</div>
