@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { getRandomInt } from '../../utils/random.util';
 import { HumanSchema, StarshipSchema } from './swapi.schema';
@@ -34,11 +34,25 @@ export class SwapiService {
 
   getRandomHuman(): Observable<Human> {
     const randomId = getRandomInt(1, MAX_HUMAN_ID);
-    return this.getHuman(randomId);
+    return this.getHuman(randomId).pipe(catchError(error => {
+        if (error instanceof HttpErrorResponse && error.status === 404) {
+          return this.getRandomHuman();
+        }
+
+        return throwError(error);
+      })
+    );
   }
 
   getRandomStarship(): Observable<Starship> {
     const randomId = getRandomInt(1, MAX_STARSHIP_ID);
-    return this.getStarship(randomId);
+    return this.getStarship(randomId).pipe(catchError(error => {
+        if (error instanceof HttpErrorResponse && error.status === 404) {
+          return this.getRandomStarship();
+        }
+
+        return throwError(error);
+      })
+    );
   }
 }
