@@ -3,10 +3,9 @@ import { JudgeService } from '../judge/judge.service';
 import { Entity } from 'src/app/core/model/entity.model';
 import { SwapiService } from 'src/app/core/services/swapi/swapi.service';
 import { GameService } from 'src/app/core/services/game/game.service';
-import { concat, Observable, throwError } from 'rxjs';
-import { catchError, toArray } from 'rxjs/operators';
+import { concat, Observable } from 'rxjs';
+import { toArray } from 'rxjs/operators';
 import { GameMode } from 'src/app/core/model/gamemode.model';
-import { HttpErrorResponse } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -21,13 +20,7 @@ export class BattleService {
 
   // TODO: Add proper error handling
   getBattlePair(): Observable<Entity[]> {
-    return concat(this.getEntityForMode(), this.getEntityForMode()).pipe(toArray(), catchError(error => {
-      if (error instanceof HttpErrorResponse && error.status === 404) {
-        return this.getBattlePair();
-      }
-
-      return throwError(error);
-    }));
+    return concat(this.getEntityForMode(), this.getEntityForMode()).pipe(toArray());
   }
 
   getEntityForMode(): Observable<Entity> {

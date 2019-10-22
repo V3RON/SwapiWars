@@ -10,15 +10,14 @@ import { BattleService } from '../../services/battle/battle.service';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { Entity } from 'src/app/core/model/entity.model';
 import { GameService } from 'src/app/core/services/game/game.service';
-import { debounceTime, map, tap } from "rxjs/operators";
+import { debounceTime, map, shareReplay, tap } from "rxjs/operators";
 
 @Component({
   selector: 'app-battle',
   templateUrl: './battle.component.html',
   styleUrls: ['./battle.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  providers: [BattleService]
+  encapsulation: ViewEncapsulation.None
 })
 export class BattleComponent implements OnInit, OnDestroy {
   entities$: Observable<Entity[]>;
@@ -50,7 +49,7 @@ export class BattleComponent implements OnInit, OnDestroy {
   }
 
   boostrapBattle() {
-    this.entities$ = this.battle.getBattlePair();
+    this.entities$ = this.battle.getBattlePair().pipe(shareReplay(1));
 
     this.endedSubscription = this.entities$.pipe(
       map(pair => this.battle.getWinner(pair)),
