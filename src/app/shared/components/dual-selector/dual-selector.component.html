@@ -1,6 +1,6 @@
 <h2 class="swars-dual-selector__header">{{ title }}</h2>
 <div class="row between-xs">
-    <div *ngFor="let item of options; index as index" class="col-sm-12 col-md-5">
+  <div *ngFor="let item of options; index as index" class="col-xs-12 col-sm-5">
         <mat-card class="swars-dual-selector__option-card" [class.selected]="index === selectedIndex"
                   (click)="selectItem(index)">
             <div class="swars-dual-selector__option-icon">
