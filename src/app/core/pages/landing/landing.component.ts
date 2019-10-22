@@ -59,6 +59,6 @@ export class LandingComponent implements OnInit {
     const gameMode: GameMode = this.startingForm.get('mode').value;
 
     this.game.runGame(gameMode);
-    this.router.navigate(['/battle']);
+    this.router.navigate(['/battle'], {replaceUrl: true});
   }
 }

@@ -14,13 +14,13 @@ swars-landing {
 
 .swars-landing__header {
   font-size: 5rem;
-  font-family: 'StarJedi';
+  font-family: 'StarJedi', Roboto, "Helvetica Neue", sans-serif;
   line-height: 1;
   text-align: center;
   color: mat-color($SwapiWars-primary);
 }
 
 button.swars-landing__form-submit {
-  margin-top: 2rem;
+  margin: 2rem 0;
   width: 100%;
 }
