@@ -1,16 +1,14 @@
 import { JudgeService } from '../../judge.service';
 import { Starship } from '../../../../../../core/model/starship.model';
+import { MODIFICATORS_CONFIG } from '../../../../../../core/config/points.config';
+import { GameMode } from '../../../../../../core/model/gamemode.model';
 
-const MODIFICATORS = {
-  crew: 2,
-  passengers: 1,
-  costInCredits: 4
-};
+const MODIFICATORS = MODIFICATORS_CONFIG[GameMode.STARSHIP];
 
 export class StarshipJudgeService extends JudgeService {
   private static calculatePoints(entity: Starship): number {
     return Object.keys(MODIFICATORS)
-      .map(key => (isNaN(entity[key]) ? 0 : entity[key]) * MODIFICATORS[key])
+      .map(key => entity[key] * MODIFICATORS[key])
       .reduce((arr, val) => arr + val, 0);
   }
 

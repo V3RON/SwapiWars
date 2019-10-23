@@ -44,8 +44,8 @@ export class Starship implements Entity {
 
   constructor(starshipSchema: StarshipSchema) {
     this._name = starshipSchema.name;
-    this._crew = Number(starshipSchema.crew);
-    this._passengers = Number(starshipSchema.passengers);
-    this._costInCredits = Number(starshipSchema.cost_in_credits);
+    this._crew = parseInt(starshipSchema.crew, 10) || 0;
+    this._passengers = parseInt(starshipSchema.passengers, 10) || 0;
+    this._costInCredits = parseInt(starshipSchema.cost_in_credits, 10) || 0;
   }
 }

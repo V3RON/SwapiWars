@@ -1,16 +1,14 @@
 import { JudgeService } from '../../judge.service';
 import { Human } from 'src/app/core/model/human.model';
+import { MODIFICATORS_CONFIG } from '../../../../../../core/config/points.config';
+import { GameMode } from '../../../../../../core/model/gamemode.model';
 
-const MODIFICATORS = {
-  height: 2,
-  mass: 1
-};
-
+const MODIFICATORS = MODIFICATORS_CONFIG[GameMode.HUMAN];
 
 export class PeopleJudgeService extends JudgeService {
   private static calculatePoints(entity: Human): number {
     return Object.keys(MODIFICATORS)
-      .map(key => (isNaN(entity[key]) ? 0 : entity[key]) * MODIFICATORS[key])
+      .map(key => entity[key] * MODIFICATORS[key])
       .reduce((arr, val) => arr + val, 0);
   }
 

@@ -24,7 +24,6 @@ export class Human implements Entity {
     return this._gender;
   }
 
-  // TODO: GENERALIZE!
   get stats(): BattleStat[] {
     return [
       {
@@ -44,8 +43,8 @@ export class Human implements Entity {
 
   constructor(humanSchema: HumanSchema) {
     this._name = humanSchema.name;
-    this._height = Number(humanSchema.height);
-    this._mass = Number(humanSchema.mass);
+    this._height = parseInt(humanSchema.height, 10) || 0;
+    this._mass = parseInt(humanSchema.mass, 10) || 0;
     this._gender = humanSchema.gender;
   }
 }
