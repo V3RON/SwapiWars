@@ -10,7 +10,7 @@ import { Entity } from '../../../core/model/entity.model';
 })
 export class BattleCardComponent {
   _entity: Entity = {
-    name: '?????',
+    name: '????',
     stats: []
   };
 

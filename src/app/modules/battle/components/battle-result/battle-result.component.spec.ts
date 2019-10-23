@@ -1,25 +1,44 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BattleResultComponent } from './battle-result.component';
+import { createHostFactory, SpectatorHost } from '@ngneat/spectator';
+import { MatCardModule } from '@angular/material/card';
 
 describe('BattleResultComponent', () => {
-  let component: BattleResultComponent;
-  let fixture: ComponentFixture<BattleResultComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [BattleResultComponent]
-    })
-      .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(BattleResultComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  let spectator: SpectatorHost<BattleResultComponent>;
+  const createHost = createHostFactory({
+    component: BattleResultComponent,
+    imports: [MatCardModule]
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  beforeEach(() => {
+    spectator = createHost('<swars-battle-result [player]="player">', {
+      hostProps: {
+        player: null
+      }
+    });
+  });
+
+  it('should display winning info when player is given', () => {
+    spectator.setHostInput({
+      player: 1
+    });
+
+    let text = spectator.debugElement.nativeElement.textContent;
+    expect(text).toBeTruthy(text.includes('Player 2'));
+
+    spectator.setHostInput({
+      player: 0
+    });
+
+    text = spectator.debugElement.nativeElement.textContent;
+    expect(text).toBeTruthy(text.includes('Player 1'));
+  });
+
+  it('should display a tie when player is unknown', () => {
+    spectator.setHostInput({
+      player: -1
+    });
+
+    const text = spectator.debugElement.nativeElement.textContent;
+    expect(text).toBeTruthy(text.includes('tie'));
   });
 });

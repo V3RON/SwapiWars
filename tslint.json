@@ -18,13 +18,19 @@
     "component-selector": [
       true,
       "element",
-      "app",
+      "swars",
       "kebab-case"
     ],
     "import-blacklist": [
       true,
       "rxjs/Rx"
     ],
+    "variable-name": {
+      "options": [
+        "check-format",
+        "allow-leading-underscore"
+      ]
+    },
     "interface-name": false,
     "max-classes-per-file": false,
     "max-line-length": [

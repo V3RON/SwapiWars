@@ -1,20 +1,19 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GameService } from '../../services/game/game.service';
 import { GameMode } from '../../model/gamemode.model';
 
 @Component({
-  selector: 'swars-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
-export class LandingComponent implements OnInit {
+export class LandingComponent {
   startingForm: FormGroup = new FormGroup({
     mode: new FormControl(null, Validators.required),
-    //players: new FormControl(null, Validators.required)
+    // players: new FormControl(null, Validators.required)
   });
 
   options = [
@@ -49,10 +48,6 @@ export class LandingComponent implements OnInit {
     private router: Router,
     private game: GameService
   ) {
-  }
-
-  ngOnInit() {
-    this.startingForm.valueChanges.subscribe(console.log);
   }
 
   onStart(): void {

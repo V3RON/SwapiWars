@@ -1,3 +1,3 @@
 export enum GameMode {
-  HUMAN = "human", STARSHIP = "starship"
+  HUMAN = 'human', STARSHIP = 'starship'
 }

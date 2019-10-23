@@ -29,7 +29,7 @@ export class SwapiService {
   getStarship(id: number): Observable<Starship> {
     return this.http.get<StarshipSchema>(`${environment.apiUrl}/starships/${id}/`).pipe(
       map(schema => new Starship(schema))
-    )
+    );
   }
 
   getRandomHuman(): Observable<Human> {

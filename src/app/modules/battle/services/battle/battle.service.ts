@@ -18,7 +18,6 @@ export class BattleService {
   ) {
   }
 
-  // TODO: Add proper error handling
   getBattlePair(): Observable<Entity[]> {
     return concat(this.getEntityForMode(), this.getEntityForMode()).pipe(toArray());
   }
@@ -32,10 +31,6 @@ export class BattleService {
   }
 
   getWinner(pair: Entity[]): number {
-    if (pair.length != 2) {
-      throw new Error('WINNER-NOT-PAIR');
-    }
-
     return this.judge.judgeBattle(pair[0], pair[1]);
   }
 

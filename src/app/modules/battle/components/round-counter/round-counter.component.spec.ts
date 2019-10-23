@@ -1,25 +1,27 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RoundCounterComponent } from './round-counter.component';
+import { createHostFactory, SpectatorHost } from '@ngneat/spectator';
+import { MatCardModule } from '@angular/material/card';
 
 describe('RoundCounterComponent', () => {
-  let component: RoundCounterComponent;
-  let fixture: ComponentFixture<RoundCounterComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [RoundCounterComponent]
-    })
-      .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(RoundCounterComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  let spectator: SpectatorHost<RoundCounterComponent>;
+  const createHost = createHostFactory({
+    component: RoundCounterComponent,
+    imports: [MatCardModule]
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  beforeEach(() => spectator = createHost('<swars-round-counter [round]="round"></swars-round-counter>'));
+
+  it('should render waiting message when round is less or equal 0 or undefined', () => {
+    const message = spectator.debugElement.nativeElement.textContent;
+    expect(message.includes('Starting')).toBe(true);
+  });
+
+  it('should render round number', () => {
+    spectator.setHostInput({
+      round: 12
+    });
+
+    const message = spectator.debugElement.nativeElement.textContent;
+    expect(message.includes('12')).toBe(true);
   });
 });

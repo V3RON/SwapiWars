@@ -1,5 +1,5 @@
 import { JudgeService } from '../../judge.service';
-import { Starship } from "../../../../../../core/model/starship.model";
+import { Starship } from '../../../../../../core/model/starship.model';
 
 const MODIFICATORS = {
   crew: 2,
@@ -8,6 +8,12 @@ const MODIFICATORS = {
 };
 
 export class StarshipJudgeService extends JudgeService {
+  private static calculatePoints(entity: Starship): number {
+    return Object.keys(MODIFICATORS)
+      .map(key => (isNaN(entity[key]) ? 0 : entity[key]) * MODIFICATORS[key])
+      .reduce((arr, val) => arr + val, 0);
+  }
+
   judgeBattle(entityA: Starship, entityB: Starship): number {
     const pointsA = StarshipJudgeService.calculatePoints(entityA);
     const pointsB = StarshipJudgeService.calculatePoints(entityB);
@@ -19,11 +25,5 @@ export class StarshipJudgeService extends JudgeService {
     }
 
     return -1;
-  }
-
-  private static calculatePoints(entity: Starship): number {
-    return Object.keys(MODIFICATORS)
-      .map(key => (isNaN(entity[key]) ? 0 : entity[key]) * MODIFICATORS[key])
-      .reduce((arr, val) => arr + val, 0);
   }
 }

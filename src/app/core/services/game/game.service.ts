@@ -27,7 +27,7 @@ export class GameService {
 
   incrementPlayerScore(player: number): void {
     if (player < 0 || player > 1) {
-      throw new Error("PLAYER-NOT-EXISTS");
+      return;
     }
 
     const currentScore = [...this._scoresBehaviorSubject.getValue()];

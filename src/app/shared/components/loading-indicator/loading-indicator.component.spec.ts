@@ -1,25 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LoadingIndicatorComponent } from './loading-indicator.component';
+import { createComponentFactory, Spectator } from '@ngneat/spectator';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 describe('LoadingIndicatorComponent', () => {
-  let component: LoadingIndicatorComponent;
-  let fixture: ComponentFixture<LoadingIndicatorComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [LoadingIndicatorComponent]
-    })
-      .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LoadingIndicatorComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  let spectator: Spectator<LoadingIndicatorComponent>;
+  const createComponent = createComponentFactory({
+    component: LoadingIndicatorComponent,
+    imports: [MatCardModule, MatProgressSpinnerModule]
   });
 
+  beforeEach(() => spectator = createComponent());
+
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 });

@@ -10,10 +10,9 @@ import { BattleService } from '../../services/battle/battle.service';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { Entity } from 'src/app/core/model/entity.model';
 import { GameService } from 'src/app/core/services/game/game.service';
-import { debounceTime, map, shareReplay, tap } from "rxjs/operators";
+import { debounceTime, map, shareReplay, tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-battle',
   templateUrl: './battle.component.html',
   styleUrls: ['./battle.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -70,8 +69,12 @@ export class BattleComponent implements OnInit, OnDestroy {
   teardownBattle() {
     this.ended = false;
     this.winner = undefined;
-    !!this.endedSubscription && this.endedSubscription.unsubscribe();
-    !!this.rerollButtonSubscription && this.rerollButtonSubscription.unsubscribe();
+    if (this.endedSubscription) {
+      this.endedSubscription.unsubscribe();
+    }
+    if (this.rerollButtonSubscription) {
+      this.rerollButtonSubscription.unsubscribe();
+    }
     this.changeDet.markForCheck();
   }
 

@@ -9,8 +9,8 @@ import {
   UrlSegment,
   UrlTree
 } from '@angular/router';
-import { GameService } from "../services/game/game.service";
-import { Observable } from "rxjs";
+import { GameService } from '../services/game/game.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +37,7 @@ export class BattleGuard implements CanActivate, CanLoad {
       this.router.navigate(['/']);
     }
 
-    return true;
+    return canLoad;
   }
 
   private canDoAnything() {

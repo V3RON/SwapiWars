@@ -1,4 +1,4 @@
 export interface BattleStat {
   name: string;
-  value: unknown
+  value: unknown;
 }

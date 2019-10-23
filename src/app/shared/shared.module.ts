@@ -6,7 +6,7 @@ import { DualSelectorComponent } from './components/dual-selector/dual-selector.
 import { BattleCardComponent } from './components/battle-card/battle-card.component';
 import { UndasherPipe } from './pipes/undasher/undasher.pipe';
 import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
-import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const MATERIAL_MODULES = [
   MatCardModule,

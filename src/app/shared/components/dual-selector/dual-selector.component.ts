@@ -24,7 +24,7 @@ export class DualSelectorComponent implements ControlValueAccessor {
   title: string;
 
   @Input()
-  options: DualSelectorItem[];
+  options: DualSelectorItem[] = [];
 
   selectedIndex: number;
   onChange: (value: unknown) => {};
@@ -45,9 +45,13 @@ export class DualSelectorComponent implements ControlValueAccessor {
     }
   }
 
-  writeValue(selected: number): void {
-    this.selectedIndex = selected;
-    this.changeDetRef.markForCheck();
+  writeValue(selectedValue: unknown): void {
+    const itemFromValue = this.options.findIndex(item => item.value === selectedValue);
+
+    if (itemFromValue !== -1) {
+      this.selectedIndex = itemFromValue;
+      this.changeDetRef.markForCheck();
+    }
   }
 
   registerOnChange(fn: () => {}): void {

@@ -8,6 +8,12 @@ const MODIFICATORS = {
 
 
 export class PeopleJudgeService extends JudgeService {
+  private static calculatePoints(entity: Human): number {
+    return Object.keys(MODIFICATORS)
+      .map(key => (isNaN(entity[key]) ? 0 : entity[key]) * MODIFICATORS[key])
+      .reduce((arr, val) => arr + val, 0);
+  }
+
   judgeBattle(entityA: Human, entityB: Human): number {
     const pointsA = PeopleJudgeService.calculatePoints(entityA);
     const pointsB = PeopleJudgeService.calculatePoints(entityB);
@@ -20,11 +26,5 @@ export class PeopleJudgeService extends JudgeService {
     }
 
     return -1;
-  }
-
-  private static calculatePoints(entity: Human): number {
-    return Object.keys(MODIFICATORS)
-      .map(key => (isNaN(entity[key]) ? 0 : entity[key]) * MODIFICATORS[key])
-      .reduce((arr, val) => arr + val, 0);
   }
 }

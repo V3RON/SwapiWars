@@ -12,9 +12,9 @@ import { RoundCounterComponent } from './components/round-counter/round-counter.
 import { MatCardModule } from '@angular/material';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { GameScoreComponent } from './components/game-score/game-score.component';
-import { MatButtonModule } from "@angular/material/button";
+import { MatButtonModule } from '@angular/material/button';
 import { BattleResultComponent } from './components/battle-result/battle-result.component';
-import { BattleService } from "./services/battle/battle.service";
+import { BattleService } from './services/battle/battle.service';
 
 const MATERIAL_COMPONENTS = [
   MatCardModule,

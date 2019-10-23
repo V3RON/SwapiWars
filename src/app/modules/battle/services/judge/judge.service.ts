@@ -3,5 +3,5 @@ import { Entity } from 'src/app/core/model/entity.model';
 
 @Injectable()
 export abstract class JudgeService {
-  abstract judgeBattle(entityA: Entity, entityB: Entity): number
+  abstract judgeBattle(entityA: Entity, entityB: Entity): number;
 }

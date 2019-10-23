@@ -3,10 +3,10 @@ import { StarshipSchema } from '../services/swapi/swapi.schema';
 import { BattleStat } from './battle-stat.model';
 
 export class Starship implements Entity {
-  private _name: string;
-  private _crew: number;
-  private _passengers: number;
-  private _costInCredits: number;
+  private readonly _name: string;
+  private readonly _crew: number;
+  private readonly _passengers: number;
+  private readonly _costInCredits: number;
 
   get name(): string {
     return this._name;

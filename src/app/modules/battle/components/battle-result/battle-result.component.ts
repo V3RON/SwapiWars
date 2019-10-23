@@ -13,7 +13,7 @@ export class BattleResultComponent {
   @Input()
   set player(value: number) {
     if (value < -1 || value > 1) {
-      throw new Error('UNKNOWN-PLAYER');
+      return;
     }
 
     this._player = value;
