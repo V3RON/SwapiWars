@@ -2,7 +2,7 @@
 Simple game-like app to test out the SWAPI. Developed as recruitment assigment.
 
 # Demo
-Available at Github Pages! (Click here)[https://v3ron.github.io/SwapiWars/]
+Available at Github Pages! [Click here](https://v3ron.github.io/SwapiWars/)
 
 # Features
 * select your fighter - human or starship
